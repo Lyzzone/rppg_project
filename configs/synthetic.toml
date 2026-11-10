@@ -1,0 +1,38 @@
+[runtime]
+device = "cuda"
+num_threads = 2
+seed = 42
+
+[model]
+name = "convnet3d"
+
+[input]
+fps = 30
+window_frames = 60
+patch_size = 25
+
+[train]
+epochs = 30
+batch_size = 32
+learning_rate = 0.001
+test_after_train = true
+
+[data.train]
+source = "synthetic"
+samples_per_class = 700
+seed = 42
+refresh_each_epoch = false
+
+[data.val]
+source = "synthetic"
+samples_per_class = 1
+seed = 43
+
+[data.test]
+source = "synthetic"
+samples_per_class = 1
+seed = 44
+
+[output]
+root = "../runs"
+experiment = "synthetic"

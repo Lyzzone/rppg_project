@@ -1,0 +1,37 @@
+[runtime]
+device = "cpu"
+num_threads = 2
+
+[input]
+fps = 30              # Video frame rate required by the current checkpoint.
+window_frames = 60    # Frames per prediction, about 2 seconds.
+patch_size = 25       # Crop one 25x25 patch at the ROI coordinates.
+
+[train]
+batch_size = 1        # The evaluate command also uses this batch size.
+
+[data.test]
+source = "rppg10"
+subject_id = "Subject_1"
+session_id = "session_1"
+
+# Paths are relative to this TOML file. Use the same subject in both paths.
+# For the same subject and session, switch only the AVI to compare facial regions.
+video_path = "../../Dataset_rPPG-10/Subject_1/Subject_1_Forehead_.avi"
+ecg_path = "../../Dataset_rPPG-10/Subject_1/Subject_1_ECG.npy"
+
+# Top-left corner of the center 25x25 patch in a 64x64 video.
+roi_x = 19
+roi_y = 19
+
+# Zero-based, half-open frame range [150, 1050). A window must fit inside it.
+start_frame = 150
+stop_frame = 1050
+stride_frames = 60    # Set to 30 for overlapping windows with a 1-second step.
+
+ecg_sample_rate = 1000  # Hz, independent of the video frame rate.
+ecg_offset_s = 0.0      # ECG time = video time + this offset in seconds.
+
+[output]
+root = "../runs"
+experiment = "rppg10_subject1_forehead"

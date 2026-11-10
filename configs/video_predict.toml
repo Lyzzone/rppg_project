@@ -1,0 +1,16 @@
+[runtime]
+device = "cpu"
+num_threads = 2
+
+[predict]
+source = "video"             # camera enables live terminal results
+video_path = "../datasets/real/videos/face_30fps.mp4"
+camera_index = 0
+roi = [100, 60, 50, 50]       # [x, y, width, height], adjust to your recording
+frame_stride = 30
+patch_stride = 25
+batch_size = 1
+
+[output]
+root = "../runs"
+experiment = "prediction"

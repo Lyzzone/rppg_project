@@ -1,0 +1,33 @@
+[runtime]
+device = "cpu"
+num_threads = 2
+seed = 42
+
+[input]
+fps = 30
+window_frames = 60
+patch_size = 25
+
+[train]
+epochs = 5
+batch_size = 1
+learning_rate = 0.0001
+init_checkpoint = "../weights/best.pt"
+freeze_backbone = true
+test_after_train = true
+
+[data.train]
+source = "real"
+manifest = "../datasets/real/manifest.csv"
+
+[data.val]
+source = "real"
+manifest = "../datasets/real/manifest.csv"
+
+[data.test]
+source = "real"
+manifest = "../datasets/real/manifest.csv"
+
+[output]
+root = "../runs"
+experiment = "real_finetune"

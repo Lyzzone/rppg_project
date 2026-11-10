@@ -1,0 +1,6 @@
+# Install PyTorch for your target device first. See README.md.
+numpy>=1.26,<3
+opencv-python-headless>=4.8,<5
+matplotlib>=3.8,<4
+scipy>=1.11,<2
+tomli>=2; python_version < "3.11"

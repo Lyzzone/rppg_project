@@ -1,0 +1,6 @@
+__pycache__/
+.venv/
+runs/
+records/
+datasets/real/videos/
+weights/
